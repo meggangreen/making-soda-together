@@ -109,12 +109,14 @@ def get_case_combos(num, cases, curr_combo=[], case_combos=[]):
             rem = num - sum(curr_combo)
             print("curr, num, rem in for loop after extend", curr_combo, num, rem)
             # import pdb; pdb.set_trace();
-            if rem > 0 and len(cases) > 1:
+            if rem < 0:
+                break
+            elif rem > 0 and len(cases) > 1:
                 get_case_combos(rem, cases[i+1:], curr_combo)
             elif sum(curr_combo) == num and curr_combo not in case_combos:
                 case_combos.append(curr_combo)
                 curr_combo = []
-                print("case combos", case_combos)
+                print("case combos, num, rem", case_combos, num, rem)
 
     return case_combos
 
@@ -124,7 +126,7 @@ def get_case_combos(num, cases, curr_combo=[], case_combos=[]):
             # curr_combo = curr_combo + temp_combo if temp_combo else curr_combo
             # print("curr in for loop after addition", curr_combo)
 if __name__ == '__main__':
-    print(get_case_combos(3, [2, 1]))
+    print(get_case_combos(4, [3, 2, 1]))
 
 
 
