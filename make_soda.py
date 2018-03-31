@@ -17,8 +17,8 @@ def make_soda(num, sizes):
                 break
             else:
                 temp.append(item)
-                rem = num % item
-                num = rem
+                num = num % item
+                # num = rem
     return temp
     # if temp not in combos:
     #     combos.append(temp)
@@ -27,8 +27,9 @@ def make_soda(num, sizes):
 
     return combos
 # print make_soda(4, [1, 2, 3])
+# [[1, 1, 1, 1], [1, 1, 2], [1, 3], [2, 2]]
 # print make_soda(4, [2, 4])
-# [[1,1,1,1], [1,1,2], [1,3], [2, 2]]
+# [[2, 2], [4]]
 
 
 def get_all_combos(num, sizes):
@@ -71,10 +72,3 @@ def all_soda(num, sizes):
         combos.append(temp)
 
     return combos
-
-
-
-
-
-
-
