@@ -75,7 +75,36 @@ def _get_case_cache(cases):
 def get_all_combos(num, cases):
     """ Returns all unique combinations of cases whose sum is num. """
 
+    cases.reverse()
     all_combos = []
+
+    for i in range(len(cases)):
+        if cases[i] <= num:
+            combos = get_case_combos(num, cases[:i+1])
+            all_combos.extend([cmb for cmb in combos if cmb not in all_combos])
+
+    return all_combos
+
+
+def get_case_combos(num, cases, curr_combo=[], case_combos=[]):
+    """ Returns all unique combinations of cases with one required case. """
+
+    # This only happens during remainder calcs
+    if num < 1 or num < cases[0]:
+        return curr_combo
+
+    for i in range(len(cases))
+        if cases[i] > num:
+            # cases[i] is ineligible
+            continue
+        # known: case[i] <= num
+        curr_combo.extend([cases[i]*num] // cases[i])
+        for n in range(1, num // (cases[i]+1)):
+            rem = num - cases[i] * n
+            temp_combo = get_combos(rem, cases, curr_combo, case_combos).sort()
+            if sum(temp_combo) == num and temp_combo not in case_combos:
+                case_combos.append(temp_combo)
+    return case_combos
 
 
 
