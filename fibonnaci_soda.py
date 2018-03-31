@@ -72,19 +72,6 @@ def _get_case_cache(cases):
 #           case_combos.append(temp_combo)
 # return case_combos
 
-def get_all_combos(num, cases):
-    """ Returns all unique combinations of cases whose sum is num. """
-
-    cases.reverse()
-    all_combos = []
-
-    for i in range(len(cases)):
-        if cases[i] <= num:
-            combos = get_case_combos(num, cases[i:])
-            all_combos.extend([cmb for cmb in combos if cmb not in all_combos])
-
-    return all_combos
-
 
 def get_case_combos(num, cases, curr_combo=[], case_combos=[]):
     """ Returns all unique combinations of cases with one required case. """
