@@ -10,9 +10,10 @@ def make_soda(num, sizes):
         if item <= num:
             if num % item == 0:
                 pack = num / item
-                while pack > 0:
-                    temp.append(item)
-                    pack -= 1
+                temp.extend([item] * pack)
+                # while pack > 0:
+                #     temp.append(item)
+                #     pack -= 1
                 break
             else:
                 temp.append(item)
@@ -35,7 +36,7 @@ def get_all_combos(num, sizes):
     all_combos = []
     for i in range(len(sizes)):
         new_combo = make_soda(num, sizes[:i+1])
-        print num, sizes[:i+1], new_combo
+        # print num, sizes[:i+1], new_combo
         all_combos.append(new_combo)
 
     return all_combos
@@ -70,4 +71,10 @@ def all_soda(num, sizes):
         combos.append(temp)
 
     return combos
+
+
+
+
+
+
 
